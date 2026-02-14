@@ -1,32 +1,45 @@
 # 📌 XÂY DỰNG NỀN TẢNG QUẢN LÝ HIỆU SUẤT HOẠT ĐỘNG CỦA DOANH NGHIỆP MỘT CÁCH THÔNG MINH DỰA TRÊN WEB VÀ AI
 
-## 🎯 Mục tiêu của đề tài
+📌 Giới thiệu
 
-Đề tài nhằm xây dựng một nền tảng Web hỗ trợ doanh nghiệp quản lý nhân sự, công việc và hiệu suất làm việc một cách khoa học, đồng thời tích hợp Trí tuệ nhân tạo (AI) để:
+Đây là hệ thống Web hỗ trợ doanh nghiệp quản lý nhân sự – công việc – hiệu suất hoạt động, tích hợp Trí tuệ nhân tạo (AI) nhằm phân tích, dự báo và hỗ trợ ra quyết định.
 
-* Phân tích dữ liệu hoạt động
-* Dự báo tiến độ công việc
-* Đánh giá và xếp loại hiệu suất nhân viên
-* Hỗ trợ nhà quản lý ra quyết định kịp thời và chính xác
+Hệ thống hướng đến mô hình quản lý dự báo (Predictive Management) thay vì chỉ thống kê dữ liệu quá khứ như các hệ thống truyền thống.
 
----
+🎯 Mục tiêu đề tài
 
-## 🧠 Ý tưởng và tính mới
+Xây dựng hệ thống quản lý doanh nghiệp trên nền tảng Web
 
-Khác với các hệ thống quản lý truyền thống chỉ thống kê dữ liệu quá khứ, hệ thống này hướng đến **quản lý dự báo**, trong đó AI đóng vai trò như một trợ lý thông minh:
+Phân tích dữ liệu hoạt động nội bộ
 
-* **Linear Regression:** Dự đoán nguy cơ trễ hạn công việc
-* **Random Forest:** Phân loại và xếp hạng hiệu suất nhân viên
+Dự báo nguy cơ trễ hạn công việc
 
-Hệ thống phù hợp với doanh nghiệp SME nhờ kiến trúc gọn nhẹ, chi phí triển khai thấp và dễ mở rộng.
+Đánh giá và xếp loại hiệu suất nhân viên
 
----
+Hỗ trợ nhà quản lý ra quyết định kịp thời
 
-## 🏗️ Mô hình và kiến trúc hệ thống
+🧠 Điểm nổi bật & tính mới
 
-Hệ thống được xây dựng theo mô hình **Client – Server nhiều tầng (Multi-tier Architecture)** kết hợp **AI Service**:
+Khác với hệ thống quản lý thông thường, nền tảng tích hợp AI như một trợ lý thông minh:
 
-```
+📈 Linear Regression – Dự đoán nguy cơ trễ hạn công việc
+
+🌲 Random Forest – Phân loại và xếp hạng hiệu suất nhân viên
+
+📊 So sánh kết quả dự báo và thực tế
+
+Hệ thống phù hợp với doanh nghiệp SME nhờ:
+
+Kiến trúc gọn nhẹ
+
+Chi phí triển khai thấp
+
+Dễ mở rộng và nâng cấp
+
+🏗️ Kiến trúc hệ thống
+
+Hệ thống được xây dựng theo mô hình Multi-tier Architecture kết hợp AI Service độc lập:
+
 Client (Web Browser)
         ↓
 Frontend (React)
@@ -36,130 +49,156 @@ Backend (ASP.NET Core / Node.js)
 SQL Server Database
         ↓
 AI Service (Python + Scikit-learn)
-```
 
-* Frontend: Hiển thị giao diện, Dashboard, biểu đồ
-* Backend: Xử lý nghiệp vụ, phân quyền, giao tiếp AI
-* AI Service: Phân tích dữ liệu và dự báo
+Thành phần chính:
 
----
+Frontend: Giao diện, Dashboard, biểu đồ
 
-## 🗄️ Thiết kế cơ sở dữ liệu
+Backend: Xử lý nghiệp vụ, phân quyền, tích hợp AI
 
-Hệ thống sử dụng **CSDL quan hệ (SQL Server)**, chuẩn hóa đến **3NF**, gồm các nhóm bảng chính:
+Database: Lưu trữ dữ liệu hệ thống
 
-### 👤 Quản lý nhân sự
+AI Service: Phân tích và dự báo thông minh
 
-* NguoiDung
-* PhongBan
-* KyNang
-* KyNangNhanVien
+🗄️ Thiết kế cơ sở dữ liệu
 
-### 📋 Quản lý dự án & công việc
+CSDL quan hệ (SQL Server), chuẩn hóa đến 3NF.
 
-* DuAn
-* CongViec
-* TaiLieuDuAn
+👤 Quản lý nhân sự
 
-### 📊 Hiệu suất & AI
+NguoiDung
 
-* DanhGiaHieuSuat
-* DuBaoAI
+PhongBan
 
-### 🔔 Hệ thống hỗ trợ
+KyNang
 
-* ThongBao
+KyNangNhanVien
 
----
+📋 Quản lý dự án & công việc
 
-## ⚙️ Chức năng chính của hệ thống
+DuAn
 
-### 🔐 Quản lý người dùng
+CongViec
 
-* Đăng nhập / đăng xuất
-* Phân quyền theo vai trò (Admin, Quản lý, Nhân viên)
-* Quản lý thông tin cá nhân
+TaiLieuDuAn
 
-### 🏢 Quản lý tổ chức
+📊 Hiệu suất & AI
 
-* Quản lý phòng ban
-* Quản lý nhân viên
-* Gán trưởng phòng
+DanhGiaHieuSuat
 
-### 📁 Quản lý dự án & công việc
+DuBaoAI
 
-* Tạo dự án
-* Giao việc cho nhân viên
-* Theo dõi tiến độ thực hiện
-* Đính kèm tài liệu
+🔔 Hệ thống hỗ trợ
 
-### 📊 Quản lý KPI & hiệu suất
+ThongBao
 
-* Đánh giá KPI theo tháng
-* Tổng hợp hiệu suất làm việc
-* Xếp loại nhân viên tự động
+⚙️ Chức năng chính
+🔐 Quản lý người dùng
 
-### 🧠 Chức năng AI thông minh
+Đăng nhập / đăng xuất
 
-* Dự báo trễ hạn công việc
-* Cảnh báo rủi ro sớm
-* Phân loại hiệu suất nhân viên
-* So sánh kết quả dự báo và thực tế
+Phân quyền (Admin / Quản lý / Nhân viên)
 
-### 📈 Dashboard & báo cáo
+Quản lý thông tin cá nhân
 
-* Biểu đồ tiến độ dự án
-* Biểu đồ KPI
-* Thống kê theo phòng ban
+🏢 Quản lý tổ chức
 
----
+Quản lý phòng ban
 
-## 🧪 Công nghệ sử dụng
+Quản lý nhân viên
 
-* **Frontend:** React
-* **Backend:** ASP.NET Core / Node.js
-* **Database:** SQL Server
-* **AI:** Python, Scikit-learn
-* **API:** RESTful API
-* **Triển khai:** Docker (mô phỏng)
+Gán trưởng phòng
 
----
+📁 Quản lý dự án & công việc
 
-## 📌 Phạm vi đề tài
+Tạo dự án
 
-* Áp dụng cho doanh nghiệp vừa và nhỏ (SME)
-* Tập trung vào quản lý nhân sự, công việc và hiệu suất
-* Dữ liệu được mô phỏng phục vụ nghiên cứu và thực nghiệm
+Phân công công việc
 
----
+Theo dõi tiến độ
 
-## 📊 Kết quả đạt được (dự kiến)
+Đính kèm tài liệu
 
-* Xây dựng thành công hệ thống Web quản lý doanh nghiệp
-* Tích hợp AI hỗ trợ dự báo và đánh giá hiệu suất
-* Giao diện trực quan, dễ sử dụng
-* Làm cơ sở cho nghiên cứu và phát triển mở rộng trong tương lai
+📊 Quản lý KPI & hiệu suất
 
----
+Đánh giá KPI theo tháng
 
-## 🚀 Hướng phát triển
+Tổng hợp hiệu suất
 
-* Mở rộng thêm nhiều mô hình AI
-* Gợi ý phân công công việc thông minh dựa trên kỹ năng
-* Triển khai thực tế cho doanh nghiệp
-* Nâng cấp thành hệ thống ERP mini cho SME
+Xếp loại nhân viên tự động
 
----
+🧠 Chức năng AI
 
-## 📬 Ghi chú
+Dự báo trễ hạn công việc
 
-Repository này phục vụ mục đích **học tập và nghiên cứu khoa học**.
+Cảnh báo rủi ro sớm
+
+Phân loại hiệu suất nhân viên
+
+So sánh dự báo và thực tế
+
+📈 Dashboard & Báo cáo
+
+Biểu đồ tiến độ dự án
+
+Biểu đồ KPI
+
+Thống kê theo phòng ban
+
+🧪 Công nghệ sử dụng
+Thành phần	Công nghệ
+Frontend	React
+Backend	ASP.NET Core / Node.js
+Database	SQL Server
+AI	Python, Scikit-learn
+API	RESTful API
+Triển khai	Docker (mô phỏng)
+📊 Kết quả đạt được (Dự kiến)
+
+Hoàn thiện hệ thống Web quản lý doanh nghiệp
+
+Tích hợp AI dự báo và đánh giá hiệu suất
+
+Giao diện trực quan, thân thiện
+
+Làm nền tảng cho nghiên cứu mở rộng
+
+🚀 Hướng phát triển
+
+Mở rộng thêm nhiều mô hình AI
+
+Gợi ý phân công công việc dựa trên kỹ năng
+
+Triển khai thực tế cho doanh nghiệp
+
+Phát triển thành hệ thống ERP mini cho SME
+
+📌 Phạm vi đề tài
+
+Áp dụng cho doanh nghiệp vừa và nhỏ (SME)
+
+Tập trung quản lý nhân sự – công việc – hiệu suất
+
+Dữ liệu mô phỏng phục vụ nghiên cứu
+
+📬 Ghi chú
+
+Repository phục vụ mục đích:
+
+Học tập
+
+Nghiên cứu khoa học
+
+Thực hiện luận văn tốt nghiệp
+
 Giảng viên có thể tham khảo:
 
-* Kiến trúc hệ thống
-* Thiết kế CSDL
-* Ý tưởng tích hợp AI trong quản lý doanh nghiệp
+Kiến trúc hệ thống
 
----
+Thiết kế CSDL
 
-✨ *Luận văn hướng đến việc ứng dụng công nghệ Web và Trí tuệ nhân tạo để giải quyết bài toán quản lý doanh nghiệp trong thực tiễn.*
+Phương pháp tích hợp AI trong quản lý doanh nghiệp
+
+✨ Tổng kết
+
+Đề tài hướng đến việc ứng dụng Web + AI để giải quyết bài toán quản lý doanh nghiệp trong thực tiễn, tạo nền tảng cho mô hình quản lý thông minh và dự báo trong tương lai.
