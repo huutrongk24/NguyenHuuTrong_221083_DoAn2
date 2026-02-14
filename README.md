@@ -138,7 +138,58 @@ CSDL quan hệ sử dụng **SQL Server**, chuẩn hóa đến **3NF**.
 
 ---
 
-## 📊 8. Kết quả đạt được (Dự kiến)
+## 🧠 8. Mô hình sử dụng
+
+Hệ thống tích hợp các mô hình Machine Learning nhằm hỗ trợ dự báo và đánh giá hiệu suất doanh nghiệp.
+
+### 📈 8.1. Linear Regression (Hồi quy tuyến tính)
+
+**Mục đích:**  
+Dự báo nguy cơ trễ hạn công việc.
+
+**Ứng dụng trong hệ thống:**
+- Dự đoán số ngày trễ
+- Ước lượng xác suất trễ hạn
+- Hỗ trợ cảnh báo sớm cho nhà quản lý
+
+**Lý do lựa chọn:**
+- Dễ triển khai
+- Dễ giải thích về mặt toán học
+- Phù hợp với dữ liệu doanh nghiệp SME
+
+---
+
+### 🌲 8.2. Random Forest (Rừng ngẫu nhiên)
+
+**Mục đích:**  
+Phân loại và xếp loại hiệu suất nhân viên.
+
+**Ứng dụng trong hệ thống:**
+- Phân loại nhân viên: Xuất sắc / Tốt / Trung bình / Yếu
+- Phân tích mức độ ảnh hưởng của các yếu tố KPI
+- Hỗ trợ đánh giá khách quan dựa trên dữ liệu
+
+**Lý do lựa chọn:**
+- Độ chính xác cao
+- Hạn chế overfitting
+- Hoạt động tốt với dữ liệu thực tế doanh nghiệp
+
+---
+
+## 📊 Tổng quan mô hình AI
+
+| Bài toán | Mô hình sử dụng | Mục tiêu |
+|----------|-----------------|----------|
+| Dự báo trễ hạn | Linear Regression | Ước lượng số ngày trễ |
+| Xếp loại hiệu suất | Random Forest Classifier | Phân loại nhân viên |
+
+---
+
+Các mô hình được triển khai bằng **Python** và thư viện **Scikit-learn**, tích hợp vào hệ thống thông qua REST API.
+
+---
+
+## 📊 9. Kết quả đạt được (Dự kiến)
 
 - Hoàn thiện hệ thống Web quản lý doanh nghiệp
 - Tích hợp AI dự báo & đánh giá hiệu suất
@@ -147,7 +198,7 @@ CSDL quan hệ sử dụng **SQL Server**, chuẩn hóa đến **3NF**.
 
 ---
 
-## 🚀 9. Hướng phát triển
+## 🚀 10. Hướng phát triển
 
 - Mở rộng thêm nhiều mô hình AI
 - Gợi ý phân công công việc thông minh dựa trên kỹ năng
@@ -156,7 +207,7 @@ CSDL quan hệ sử dụng **SQL Server**, chuẩn hóa đến **3NF**.
 
 ---
 
-## 📌 10. Phạm vi đề tài
+## 📌 11. Phạm vi đề tài
 
 - Áp dụng cho doanh nghiệp vừa và nhỏ (SME)
 - Dữ liệu mô phỏng phục vụ nghiên cứu & thực nghiệm
@@ -164,7 +215,7 @@ CSDL quan hệ sử dụng **SQL Server**, chuẩn hóa đến **3NF**.
 
 ---
 
-## 📚 11. Mục đích Repository
+## 📚 12. Mục đích Repository
 
 Repository được xây dựng phục vụ:
 
