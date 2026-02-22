@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: ai-service
+    env: python
+    plan: free
+    rootDir: AI_Service
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    runtime: python
+    pythonVersion: 3.10.11
