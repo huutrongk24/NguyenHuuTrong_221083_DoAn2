@@ -1,0 +1,27 @@
+﻿@model QLHieuSuat.Models.TaskItem
+
+<h2>Giao nhân viên cho Task: @Model.Name</h2>
+
+<form asp-action="Assign" method="post">
+    <input type="hidden" name="taskId" value="@Model.Id" />
+
+    @foreach (var emp in ViewBag.Employees)
+    {
+        <div class="form-check">
+            <input class="form-check-input"
+                   type="checkbox"
+                   name="selectedEmployees"
+                   value="@emp.Id" />
+
+            <label class="form-check-label">
+                @emp.FullName
+            </label>
+        </div>
+    }
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">
+        Lưu phân công
+    </button>
+</form>

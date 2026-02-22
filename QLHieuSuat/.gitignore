@@ -1,0 +1,17 @@
+﻿# Ignore Visual Studio folder
+.vs/
+
+# Build folders
+bin/
+obj/
+
+# User files
+*.user
+*.suo
+
+# Logs
+*.log
+
+# Database
+*.mdf
+*.ldf

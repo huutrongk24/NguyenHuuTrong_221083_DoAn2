@@ -1,0 +1,42 @@
+﻿@model IEnumerable<QLHieuSuat.Models.TaskItem>
+
+<h2>Công việc của tôi</h2>
+<h4>KPI cá nhân: @ViewBag.KPI %</h4>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Dự án</th>
+            <th>Tiến độ</th>
+            <th>Deadline</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Project?.Name</td>
+                <td>@item.ProgressPercent %</td>
+                <td>@item.EndDate?.ToString("dd/MM/yyyy")</td>
+            </tr>
+
+            <td>
+                <a asp-action="UpdateProgress"
+                asp-route-id="@item.Id"
+                class="btn btn-warning btn-sm">
+                    Cập nhật
+                </a>
+            </td>
+
+            <td>
+                <a asp-action="UpdateProgress"
+                asp-route-id="@item.Id"
+                class="btn btn-warning btn-sm">
+                    Cập nhật
+                </a>
+            </td>
+        }
+    </tbody>
+</table>

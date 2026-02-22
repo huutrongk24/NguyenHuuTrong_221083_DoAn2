@@ -1,0 +1,165 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="card mt-4 shadow">
+    <div class="card-body">
+        <h5>Biểu đồ thống kê công việc</h5>
+        <canvas id="taskChart"></canvas>
+    </div>
+</div>
+
+<div class="card mt-4 shadow">
+    <div class="card-body">
+        <h5>Biểu đồ tỷ lệ hoàn thành</h5>
+        <canvas id="pieChart"></canvas>
+    </div>
+</div>
+
+<div class="card mt-4 shadow">
+    <div class="card-body">
+        <h5>KPI trung bình theo tháng</h5>
+        <canvas id="monthChart"></canvas>
+    </div>
+</div>
+
+<div class="card mt-4 shadow">
+    <div class="card-body">
+        <h5>Công việc theo nhân viên</h5>
+        <canvas id="employeeChart"></canvas>
+    </div>
+</div>
+
+<div class="card mt-4 shadow">
+    <div class="card-body">
+        <h5>Công việc theo phòng ban</h5>
+        <canvas id="departmentChart"></canvas>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // ===== BIỂU ĐỒ CỘT =====
+        var barCtx = document.getElementById('taskChart').getContext('2d');
+
+        var taskChart = new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Tổng', 'Hoàn thành', 'Đang thực hiện'],
+                datasets: [{
+                    label: 'Số lượng công việc',
+                    data: [
+        @ViewBag.TotalTasks,
+        @ViewBag.CompletedTasks,
+        @ViewBag.InProgressTasks
+                    ],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(255, 206, 86, 0.6)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+
+        // ===== BIỂU ĐỒ TRÒN =====
+        var pieCtx = document.getElementById('pieChart').getContext('2d');
+
+        var pieChart = new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Hoàn thành', 'Chưa hoàn thành'],
+                datasets: [{
+                    data: [
+        @ViewBag.CompletedTasks,
+        @ViewBag.InProgressTasks
+                    ],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(255, 99, 132, 0.8)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+
+                // ===== BIỂU ĐỒ KPI THEO THÁNG =====
+        var monthCtx = document.getElementById('monthChart').getContext('2d');
+
+        new Chart(monthCtx, {
+            type: 'line',
+            data: {
+                labels: @Html.Raw(Json.Serialize(ViewBag.MonthLabels)),
+                datasets: [{
+                    label: 'KPI trung bình (%)',
+                    data: @Html.Raw(Json.Serialize(ViewBag.MonthData)),
+                    borderColor: 'blue',
+                    backgroundColor: 'rgba(54,162,235,0.2)',
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+                // ===== BIỂU ĐỒ THEO NHÂN VIÊN =====
+        var empCtx = document.getElementById('employeeChart').getContext('2d');
+
+        new Chart(empCtx, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(Json.Serialize(ViewBag.EmployeeNames)),
+                datasets: [{
+                    label: 'Số lượng task',
+                    data: @Html.Raw(Json.Serialize(ViewBag.EmployeeTotals)),
+                    backgroundColor: 'rgba(153, 102, 255, 0.6)'
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+
+                // ===== BIỂU ĐỒ THEO PHÒNG BAN =====
+        var deptCtx = document.getElementById('departmentChart').getContext('2d');
+
+        new Chart(deptCtx, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(Json.Serialize(ViewBag.DepartmentNames ?? new List<string>())),
+                datasets: [{
+                    label: 'Số lượng task',
+                    data: @Html.Raw(Json.Serialize(ViewBag.DepartmentTotals ?? new List<int>())),
+                    backgroundColor: 'rgba(255, 159, 64, 0.6)'
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+
+    </script>
+}

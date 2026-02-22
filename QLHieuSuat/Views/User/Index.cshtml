@@ -1,0 +1,83 @@
+﻿@model IEnumerable<QLHieuSuat.Models.UserViewModel>
+
+@{
+    ViewData["Title"] = "Quản lý User";
+}
+
+<h2 class="mb-3">Danh sách tài khoản</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<a asp-action="Create" class="btn btn-success mb-3">
+    + Tạo tài khoản mới
+</a>
+
+<table class="table table-bordered table-hover shadow">
+    <thead class="table-dark">
+        <tr>
+            <th>Email</th>
+            <th>UserName</th>
+            <th>Role</th>
+            <th width="150">Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>@user.UserName</td>
+                <td>
+                    <form asp-action="UpdateRole" method="post" class="d-flex">
+                        @Html.AntiForgeryToken()
+
+                        <input type="hidden" name="userId" value="@user.Id" />
+
+                        <select name="newRole" class="form-select form-select-sm me-2">
+                            @foreach (var role in user.AllRoles)
+                            {
+                                if (role.Name == user.Role)
+                                {
+                                    <option selected value="@role.Name">@role.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@role.Name">@role.Name</option>
+                                }
+                            }
+                        </select>
+
+                        <button type="submit" class="btn btn-sm btn-primary">
+                            Cập nhật
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <a asp-action="ResetPassword"
+                       asp-route-id="@user.Id"
+                       class="btn btn-warning btn-sm me-1">
+                        Reset
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@user.Id"
+                       class="btn btn-danger btn-sm">
+                        Xóa
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
